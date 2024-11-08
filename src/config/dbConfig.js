@@ -1,4 +1,3 @@
-import e from "express";
 import mongoose from "mongoose";
 import { DB_URL } from "./serverConfig.js";
 
