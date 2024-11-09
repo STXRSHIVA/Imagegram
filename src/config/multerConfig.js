@@ -4,7 +4,7 @@ import { AWS_BUCKET_NAME } from './serverConfig.js';
 import s3 from './awsConfig.js';
 
 export const uploaderS3 = multer({
-    storage: multers3({
+    storage: multers3({ 
         s3: s3,
         bucket: AWS_BUCKET_NAME,
         key: function (req, file, cb) {

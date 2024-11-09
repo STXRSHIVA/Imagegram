@@ -14,3 +14,10 @@ export async function createPostController(req, res) {
         data: post
     });
 }
+export async function getAllPosts(req, res) {
+  // Implement the logic to get all posts
+  return res.status(501).json({
+    success: false,
+    message: "Not Implemented",
+  })
+}
