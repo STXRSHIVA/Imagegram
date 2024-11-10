@@ -1,4 +1,4 @@
-import { createPostService } from "../services/postServices.js"; // Corrected file name
+import { createPostService, getAllPostsService } from "../services/postServices.js"; // Corrected file name
 
 export async function createPostController(req, res) {
     console.log(req.file);
@@ -15,9 +15,23 @@ export async function createPostController(req, res) {
     });
 }
 export async function getAllPosts(req, res) {
-  // Implement the logic to get all posts
-  return res.status(501).json({
-    success: false,
-    message: "Not Implemented",
-  })
+  try {
+    const limit = req.query.limit || 10;
+    const offset = req.query.offset || 0;
+
+    const paginatedPosts = await getAllPostsService(offset, limit);
+
+    return res.status(200).json({
+      success: true,
+      message: "All posts",
+      data: paginatedPosts,
+    });
+
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+    });
+  }
 }
